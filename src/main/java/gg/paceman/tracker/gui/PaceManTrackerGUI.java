@@ -38,6 +38,7 @@ public class PaceManTrackerGUI extends JFrame {
         this.asPlugin = asPlugin;
 
         this.setContentPane(this.mainPanel);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {

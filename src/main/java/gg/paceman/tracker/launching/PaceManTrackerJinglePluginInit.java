@@ -83,6 +83,7 @@ public class PaceManTrackerJinglePluginInit {
 
         Pair<PaceManTrackerGUI, JPanel> guiPair = PaceManTrackerPanel.getNewGUIAsPanel();
         PaceManTrackerGUI paceManTrackerGUI = guiPair.getLeft();
+        PluginEvents.STOP.register(paceManTrackerGUI::dispose);
         JPanel pmtPanel = guiPair.getRight();
 
         JingleGUI.addPluginTab("PaceMan Tracker", pmtPanel);
