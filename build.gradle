@@ -77,7 +77,18 @@ tasks.register('jinglePluginJar', Jar) {
     exclude "gg/paceman/tracker/launching/PaceManTrackerJultiPluginInit.class"
 }
 
+tasks.register('mcsrLauncherJar', Jar) {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    archiveBaseName = "${project.archives_base_name}-mcsrlauncher"
+    from sourceSets.main.output
+    // Bundle gson since MCSRLauncher does not provide it
+    from configurations.provided.files.findAll { it.name.contains('gson') }.collect { zipTree(it) }
+    exclude "julti.plugin.json"
+    exclude "gg/paceman/tracker/launching/PaceManTrackerJultiPluginInit.class"
+}
+
 artifacts {
     archives jultiPluginJar
     archives jinglePluginJar
+    archives mcsrLauncherJar
 }
